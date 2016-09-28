@@ -5,8 +5,26 @@
     url("/fonts/Roboto/Roboto-Light.ttf")s
 }
 body{
+
 	font-family: 'Roboto',sans-serif;
 }
 .active{
 	color:red;
+}
+.container{
+	margin:auto;
+	max-width: 1024px;
+}
+
+.Menu{
+	padding: 15px;
+}
+.item{
+	background: rgba(0, 220, 255, 0.15);
+	border-bottom: 1px solid black;
+}
+.drawerLinks > li {
+	list-style: none;
+}.drawerLinks > li > a{
+	text-decoration: none;
 }

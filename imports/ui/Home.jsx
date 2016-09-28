@@ -1,8 +1,15 @@
 // modules/Home.js
 import React from 'react'
+import Paper from 'material-ui/Paper';
+import MenuItemInsert from './MenuItemInsert'
+import NavLink from './NavLink.jsx';
+
 
 export default class Home extends React.Component{
   render() {
-    return <div>Home</div>
+    return  <Paper zDepth={1}>
+    	<NavLink to="/menu" activeClassName="active">Configurar Menu</NavLink>
+        <p>aqui van los pedidos..</p>
+    </Paper>
   }
 }

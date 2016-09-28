@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-// import NavLink from '../imports/ui/NavLink.jsx';
+import NavLink from '../imports/ui/NavLink.jsx';
 // import Repo from '../imports/ui/Repo.jsx'
-// import { IndexLink } from 'react-router'
+import { IndexLink } from 'react-router'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-
+import Paper from 'material-ui/Paper';
+import FontIcon from 'material-ui/FontIcon';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -22,26 +23,28 @@ class App extends Component {
   }
 	handleToggle () {
 		this.setState({drawerOpen: !this.state.drawerOpen});
-		console.log(this.state.drawerOpen)
+		// console.log(this.state.drawerOpen)
 	}
 
   render(){
   	return <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-	<div>
+	<Paper  zDepth={1} className="container">
     <AppBar title='GarzonMR' 
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     onLeftIconButtonTouchTap={this.handleToggle.bind(this)}/>
 
-        <Drawer width={200}  open={this.state.drawerOpen} >
+        <Drawer docked={false} width={200}  open={this.state.drawerOpen}   onRequestChange={(open) => this.setState({open})} >
           <AppBar title="GarzonMR"  onLeftIconButtonTouchTap={this.handleToggle.bind(this)}/>
-          <ul>
-          	<li>un elemento</li>
-          	<li>un elemento</li>
-          	<li>un elemento</li>
+          <ul className="drawerLinks">
+
+            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+          	<li><NavLink to="/menu" activeClassName="active">Menu</NavLink></li>
+            <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
           	</ul>
         </Drawer>
-        <MenuItemInsert/>
-	</div>
+        {/*<MenuItemInsert />*/}
+  {this.props.children}
+  </Paper>
   </MuiThemeProvider>
 	}
 }

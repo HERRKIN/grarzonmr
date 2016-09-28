@@ -1,17 +1,20 @@
 import {Mongo} from 'meteor/mongo';
 // import {SimpleSchema} from 'meteor/aldeed:simple-schema'
 import Text from 'simple-react-form-material-ui/lib/text'
+import toggle from 'simple-react-form-material-ui/lib/toggle'
+import select from 'simple-react-form-material-ui/lib/select'
 import {SimpleSchema} from 'meteor/aldeed:simple-schema'
 import {Match} from 'meteor/check';
  SimpleSchema.extendOptions({
-  srf: Match.Optional(Object)
+  srf: Match.Optional(Object),
+  mrf: Match.Optional(Object),
 })
 
 const MenuItems= new Mongo.Collection('menuitem');
 const MenuItemSchema = new SimpleSchema({
 	name:{
 		type: String,
-		label:'name',
+		label:'Nombre del plato',
 		srf:{
 			type:Text
 		}
@@ -19,11 +22,30 @@ const MenuItemSchema = new SimpleSchema({
 	},	
 	desc:{
 		type: String,
-		label:'description', 
+		label:'Descripción', 
 		srf:{
 			type:Text
 		}
-	}
+	},  
+	tipo: {
+    type: String,
+    label: 'Tipo ',
+    mrf: {
+      type: 'select',
+      options: [
+        { label: 'Entrada', value: 'Entrada' },
+        { label: 'Principal', value: 'Principal' },   
+        { label: 'Postre', value: 'Postre' },
+      ]
+    }
+   }//,
+  // activo:{
+  // 	type:Boolean,
+  // 	label:"activo",
+  // 	mrf:{
+  // 		type:"toggle"
+  // 	}
+  //}
 })
 MenuItems.attachSchema(MenuItemSchema);
 export default MenuItems;
