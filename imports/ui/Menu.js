@@ -71,7 +71,7 @@ items.push(<h2 key={tipo.toLowerCase()}>{tipo}</h2>)
         <div>
         {this.props.postres.length? this.renderItems("Postres"):"" }
         </div>
-
+       
  <FloatingActionButton mini={true} secondary={true} style={style} onTouchTap={()=>browserHistory.push('/menu/new')}>
       <ContentAdd />
     </FloatingActionButton>
