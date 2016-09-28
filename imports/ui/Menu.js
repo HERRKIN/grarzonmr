@@ -28,15 +28,16 @@ class Menu extends React.Component {
 
 
 
-  constructor (props) {
+constructor (props) {
     super(props)
     this.state = {}
   }
 
  renderEmpty (tipo) {
-    return (
-      <h3>No hay {tipo}</h3>
-    )
+    return (<div>
+      <h2 key={tipo.toLowerCase()}>{tipo}</h2>
+      <h3>Hoy no tenemos {tipo}</h3>
+    </div>)
   }
 
 renderItems(tipo){
@@ -53,25 +54,31 @@ items.push(<h2 key={tipo.toLowerCase()}>{tipo}</h2>)
     //   last = i.tipo;
     // } 
     
-    items.push(<MenuItem item={i} key={i._id}/>);
+    items.push(<MenuItem item={i} key={i._id} onDelete={this.deleteItem.bind(this)}/>);
     
   })
    // console.log(items)
   return items
 }
+
+  deleteItem(item){
+    console.log(`borrando ${item}`)
+    MenuItems.remove(item)
+  }
+
     render() {
         return (<div> 
         <h1>Menu</h1>
         <div>
-        {this.props.entradas.length? this.renderItems("Entradas") :""}
+        {this.props.entradas.length? this.renderItems("Entradas") :this.renderEmpty("Entradas")}
         </div>
         <div>
-        {this.props.principales.length? this.renderItems("Principales"):"" }
+        {this.props.principales.length? this.renderItems("Principales"):this.renderEmpty("Principales") }
         </div>
         <div>
-        {this.props.postres.length? this.renderItems("Postres"):"" }
+        {this.props.postres.length? this.renderItems("Postres"):this.renderEmpty("Postres")}
         </div>
-       
+
  <FloatingActionButton mini={true} secondary={true} style={style} onTouchTap={()=>browserHistory.push('/menu/new')}>
       <ContentAdd />
     </FloatingActionButton>

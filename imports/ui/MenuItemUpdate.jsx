@@ -27,7 +27,7 @@ export default class MenuItemUpdate extends React.Component {
         collection={MenuItems}
         type='update'
         ref='form'
-        clearOnSuccess={false}
+
         doc={this.props.MenuItem}
         onSuccess={()=>browserHistory.push('/menu')}
         />

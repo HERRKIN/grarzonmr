@@ -25,7 +25,6 @@ export default class MenuItemsInsert extends React.Component {
         collection={MenuItems}
         type='insert'
         ref='form'
-        clearOnSuccess={false}
         onSuccess={()=>browserHistory.push('/menu')}
         />
         <RaisedButton label='Guardar' primary={true} onTouchTap={() => this.refs.form.submit()}/> 
