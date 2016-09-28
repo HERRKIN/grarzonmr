@@ -9,9 +9,13 @@ import FontIcon from 'material-ui/FontIcon';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MenuItem from 'material-ui/MenuItem';
+
+
 // import MyAwesomeReactComponent from './MyAwesomeReactComponent.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MenuItemInsert from '../imports/ui/MenuItemInsert.jsx';
+
 injectTapEventPlugin();
 
 
@@ -26,6 +30,7 @@ class App extends Component {
 		// console.log(this.state.drawerOpen)
 	}
 
+
   render(){
   	return <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
 	<Paper  zDepth={1} className="container">
@@ -33,13 +38,13 @@ class App extends Component {
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     onLeftIconButtonTouchTap={this.handleToggle.bind(this)}/>
 
-        <Drawer docked={false} width={200}  open={this.state.drawerOpen}   onRequestChange={(open) => this.setState({open})} >
+        <Drawer docked={false} width={200}  open={this.state.drawerOpen}   onRequestChange={this.handleToggle.bind(this)} >
           <AppBar title="GarzonMR"  onLeftIconButtonTouchTap={this.handleToggle.bind(this)}/>
           <ul className="drawerLinks">
 
-            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-          	<li><NavLink to="/menu" activeClassName="active">Menu</NavLink></li>
-            <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
+            <li><IndexLink to="/" onTouchTap={this.handleToggle.bind(this)}  activeClassName="active">Home</IndexLink></li>
+          	<li><NavLink to="/menu" onTouchTap={this.handleToggle.bind(this)}  activeClassName="active">Menu</NavLink></li>
+            <li><NavLink to="/about" onTouchTap={this.handleToggle.bind(this)} activeClassName="active">About</NavLink></li>
           	</ul>
         </Drawer>
         {/*<MenuItemInsert />*/}
