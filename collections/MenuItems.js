@@ -1,7 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 // import {SimpleSchema} from 'meteor/aldeed:simple-schema'
 import Text from 'simple-react-form-material-ui/lib/text'
-import toggle from 'simple-react-form-material-ui/lib/toggle'
+// import toggle from 'simple-react-form-material-ui/lib/toggle'
 import select from 'simple-react-form-material-ui/lib/select'
 import {SimpleSchema} from 'meteor/aldeed:simple-schema'
 import {Match} from 'meteor/check';
@@ -45,7 +45,7 @@ const MenuItemSchema = new SimpleSchema({
   // 	mrf:{
   // 		type:"toggle"
   // 	}
-  //}
+  // }
 })
 MenuItems.attachSchema(MenuItemSchema);
 export default MenuItems;
