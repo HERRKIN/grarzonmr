@@ -40,7 +40,7 @@ class App extends Component {
 
   render(){
   	return <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-	<Paper  zDepth={1} className="container">
+	<div className="container">
     <AppBar title='GarzonMR' 
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     onLeftIconButtonTouchTap={this.handleToggle.bind(this)}/>
@@ -73,7 +73,7 @@ class App extends Component {
         </Drawer>
         {/*<MenuItemInsert />*/}
   {this.props.children}
-  </Paper>
+  </div>
   </MuiThemeProvider>
 	}
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 
 
 class MainCourses extends React.Component {
     constructor(props) {
         super(props);
+        this.state={selected:this.props.order.main};
 
     }
 
@@ -26,10 +28,8 @@ class MainCourses extends React.Component {
   saveAndContinue(e) {
     e.preventDefault()
 
-    // Get values via this.refs
-
     var data = {
-    main:this.refs.mainCourses.state.selected
+    main:this.state.selected
     }
 
 
@@ -37,16 +37,20 @@ class MainCourses extends React.Component {
     this.props.nextStep()
   }
 
+changed(e, value){
 
+  this.setState({selected:value});
+}
     render() {
     	return <div>
-    	<p>Principales</p>
-
-    <RadioButtonGroup name="mainCourses" ref="mainCourses" valueSelected={this.props.order.main} >
+		<p>Principales: </p>
+		 <Paper zDepth={1} >
+    <RadioButtonGroup name="mainCourses" onChange={this.changed.bind(this)}  ref="mainCourses" valueSelected={this.state.selected} >
     	{this.renderMainCourses()}
 
-    </RadioButtonGroup>
-    <RaisedButton label='siguiente' primary={true} onTouchTap={this.saveAndContinue.bind(this)}/> 
+    </RadioButtonGroup> 
+    </Paper>
+    <RaisedButton  className="next" label='siguiente' primary={true} disabled={this.state.selected===null} onTouchTap={this.saveAndContinue.bind(this)}/> 
 
     	</div>
     }

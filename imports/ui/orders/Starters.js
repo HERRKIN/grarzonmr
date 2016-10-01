@@ -1,12 +1,12 @@
 import React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import Paper from 'material-ui/Paper';
 
 class Starters extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state={selected:this.props.order.starter};
     }
 
     renderStarters(){
@@ -28,25 +28,29 @@ class Starters extends React.Component {
 
 
     var data = {
-    starter:this.refs.starters.state.selected
+    starter:this.state.selected
     }
 
 
     this.props.saveValues(data)
     this.props.nextStep()
   }
+changed(e, value){
 
+    this.setState({selected:value});
+
+}
 
     render() {
     	return <div>
     	<p>Entradas:</p>
-
-    <RadioButtonGroup name="starters" ref="starters" valueSelected={this.props.order.starter} >
-    	{this.renderStarters()}
+    <Paper zDepth={1} >
+    <RadioButtonGroup name="starters" onChange={this.changed.bind(this)} ref="starters" valueSelected={this.state.selected} >
+        {this.renderStarters()}
 
     </RadioButtonGroup>
-    <RaisedButton label='siguiente' primary={true} onTouchTap={this.saveAndContinue.bind(this)}/> 
-
+    </Paper>
+    <RaisedButton className="next" label='siguiente' ref="sig" disabled={this.state.selected===null} primary={true} onTouchTap={this.saveAndContinue.bind(this)}/> 
     	</div>
     }
 }

@@ -7,6 +7,8 @@ import Success from './Success';
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 import MenuItems from '../../../collections/MenuItems.js'
+import Orders from '../../../collections/Orders.js'
+import { browserHistory } from 'react-router'
 
 var Order = {
 	starter:null,
@@ -53,6 +55,10 @@ class TakeOrder extends React.Component {
             customer:null
           }
     }
+    submitOrder(){
+      Orders.insert(Order)
+      browserHistory.push('/')
+    }
 
     render() {
       console.log(this.state)
@@ -79,8 +85,7 @@ class TakeOrder extends React.Component {
         starters= {this.props.entradas}          
         mainCourses= {this.props.principales}
         desserts= {this.props.postres}
-            
-
+        saveValues={this.saveValues}
         submitOrder={this.submitOrder}/>
 			case 5:
 				return <Success  order = {Order} />
