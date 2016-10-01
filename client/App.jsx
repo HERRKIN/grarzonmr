@@ -67,7 +67,7 @@ class App extends Component {
           />
           </Menu>
             <li><IndexLink to="/" onTouchTap={this.handleToggle.bind(this)}  activeClassName="active">Home</IndexLink></li>
-          	<li><NavLink to="/menu" onTouchTap={this.handleToggle.bind(this)}  activeClassName="active">Menu</NavLink></li>
+            <li><NavLink to="/menu" onTouchTap={this.handleToggle.bind(this)}  activeClassName="active">Menu</NavLink></li>
             <li><NavLink to="/about" onTouchTap={this.handleToggle.bind(this)} activeClassName="active">About</NavLink></li>
           	</ul>
         </Drawer>
