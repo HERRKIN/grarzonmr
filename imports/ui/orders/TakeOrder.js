@@ -6,7 +6,7 @@ import Starters from './Starters';
 import Success from './Success';
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
-import MenuItems from '../../../collections/MenuItems.js'
+import Dishes from '../../../collections/Dishes.js'
 import Orders from '../../../collections/Orders.js'
 import { browserHistory } from 'react-router'
 
@@ -67,24 +67,24 @@ class TakeOrder extends React.Component {
 			case 1:
 				return <Starters  nextStep={this.nextStep.bind(this)}
                            order = {Order} 
-                           starters = {this.props.entradas}
+                           starters = {this.props.starters}
                            saveValues={this.saveValues}/>
 			case 2:
 				return <MainCourses  nextStep={this.nextStep.bind(this)}
                            previousStep={this.previousStep}
                            order = {Order} 
-                           mainCourses = {this.props.principales}
+                           mainCourses = {this.props.mainCourses}
                            saveValues={this.saveValues}/>
 			case 3:
 				return <Desserts nextStep={this.nextStep.bind(this)}
                            previousStep={this.previousStep} 
-                           order = {Order} desserts = {this.props.postres}
+                           order = {Order} desserts = {this.props.desserts}
                            saveValues={this.saveValues}/>
 			case 4:
 				return <Confirmation  order = {Order}  
-        starters= {this.props.entradas}          
-        mainCourses= {this.props.principales}
-        desserts= {this.props.postres}
+        starters= {this.props.starters}          
+        mainCourses= {this.props.mainCourses}
+        desserts= {this.props.desserts}
         saveValues={this.saveValues}
         submitOrder={this.submitOrder}/>
 			case 5:
@@ -98,8 +98,8 @@ class TakeOrder extends React.Component {
 
 export default createContainer(() => {
   // Meteor.subscribe('MenuList')
-  const entradas = MenuItems.find({ 'tipo' : 'Entrada' }).fetch()
-  const principales = MenuItems.find({ 'tipo' : 'Principal' }).fetch()
-  const postres = MenuItems.find({ 'tipo' : 'Postre' }).fetch()
-  return { entradas , principales, postres}
+  const starters = Dishes.find({ 'type' : 'starter' }).fetch()
+  const mainCourses = Dishes.find({ 'type' : 'main' }).fetch()
+  const desserts = Dishes.find({ 'type' : 'dessert' }).fetch()
+  return { starters , mainCourses, desserts}
 }, TakeOrder)

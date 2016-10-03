@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-export default class TipoItem extends React.Component {
+export default class TypeItem extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}

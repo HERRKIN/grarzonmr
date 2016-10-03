@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import MenuItems from '../collections/MenuItems.js';
+import MenuItems from '../collections/Dishes.js';
 // import Orders from '../collections/Orders.js';
 // import SimpleSchema from 'meteor/aldeed:simple-schema';
 // import {Match} from 'meteor/check';

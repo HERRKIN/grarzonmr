@@ -23,7 +23,10 @@ body{
 }
 .item{
 	background: rgba(0, 220, 255, 0.15);
-	border-bottom: 1px solid black;
+/*	width: 48%;
+	margin: 1%;
+	display: inline-block;*/
+	/*border-bottom: 1px solid black;*/
 }
 .drawerLinks{
 	padding-left:0px;

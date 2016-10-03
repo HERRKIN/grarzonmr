@@ -2,10 +2,11 @@ import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 import React from 'react'
 import {Form} from 'simple-react-form'
-import MenuItems from '../../collections/MenuItems.js'
+import Dishes from '../../collections/Dishes.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import { browserHistory } from 'react-router'
+import Paper from 'material-ui/Paper';
 
 
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -21,10 +22,10 @@ export default class MenuItemUpdate extends React.Component {
 
   render() {
     return (
-      <div className="Menu">
+      <Paper zDepth={1}className="Menu">
         <h1>editar Plato</h1>
         <Form
-        collection={MenuItems}
+        collection={Dishes}
         type='update'
         ref='form'
 
@@ -36,7 +37,7 @@ export default class MenuItemUpdate extends React.Component {
         {/*
         <p>{this.props.params.plato}</p>
         */}
-      </div>
+      </Paper>
     )
   }
 }
@@ -44,6 +45,6 @@ export default class MenuItemUpdate extends React.Component {
 export default createContainer(({params}) => {
   const {plato} = params
   // Meteor.subscribe('MenuList')
-  const MenuItem = MenuItems.findOne(plato);
+  const MenuItem = Dishes.findOne(plato);
   return { MenuItem}
 }, MenuItemUpdate)

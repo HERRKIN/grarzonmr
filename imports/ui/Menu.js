@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
-import MenuItems from '../../collections/MenuItems.js'
+import Dishes from '../../collections/Dishes.js'
 import MenuItem from './MenuItem.js';
 import React from 'react'
 import { browserHistory } from 'react-router'
@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import TipoItem from './TipoItem.js';
+import TypeItem from './TypeItem.js';
 
 const style = {
     margin: 0,
@@ -33,25 +33,25 @@ constructor (props) {
     this.state = {}
   }
 
- renderEmpty (tipo) {
+ renderEmpty (type) {
     return (<div>
-      <h2 key={tipo.toLowerCase()}>{tipo}</h2>
-      <h3>Hoy no tenemos {tipo}</h3>
+      <h2 key={type.toLowerCase()}>{type}</h2>
+      <h3>Hoy no tenemos {type}</h3>
     </div>)
   }
 
-renderItems(tipo){
+renderItems(type){
 
   // console.log(this.props.items)
   let last = '';
 
 var items =[];
-items.push(<h2 key={tipo.toLowerCase()}>{tipo}</h2>)
-   this.props[tipo.toLowerCase()].forEach((i, index)=>{
+items.push(<h2 key={type.toLowerCase()}>{type}</h2>)
+   this.props[type.toLowerCase()].forEach((i, index)=>{
  
-    // if(i.tipo!==last){
-    //   items.push(<TipoItem tipo = {i.tipo} key = {last}/>);
-    //   last = i.tipo;
+    // if(i.type!==last){
+    //   items.push(<TypeItem type = {i.type} key = {last}/>);
+    //   last = i.type;
     // } 
     
     items.push(<MenuItem item={i} key={i._id} onDelete={this.deleteItem.bind(this)}/>);
@@ -63,23 +63,27 @@ items.push(<h2 key={tipo.toLowerCase()}>{tipo}</h2>)
 
   deleteItem(item){
     console.log(`borrando ${item}`)
-    MenuItems.remove(item)
+    Dishes.remove(item)
   }
 
     render() {
         return (<div> 
         <h1>Menu</h1>
-        <div>
+        <Paper zDepth={1} >
         {this.props.entradas.length? this.renderItems("Entradas") :this.renderEmpty("Entradas")}
-        </div>
-        <div>
+        </Paper>
+        
+        <Paper zDepth={1} >
         {this.props.principales.length? this.renderItems("Principales"):this.renderEmpty("Principales") }
-        </div>
-        <div>
+        
+        </Paper>
+        
+        <Paper zDepth={1} >
         {this.props.postres.length? this.renderItems("Postres"):this.renderEmpty("Postres")}
-        </div>
+        </Paper>
+        
 
- <FloatingActionButton mini={true} secondary={true} style={style} onTouchTap={()=>browserHistory.push('/menu/new')}>
+ <FloatingActionButton secondary={true} style={style} onTouchTap={()=>browserHistory.push('/menu/new')}>
       <ContentAdd />
     </FloatingActionButton>
         </div>)
@@ -90,8 +94,8 @@ items.push(<h2 key={tipo.toLowerCase()}>{tipo}</h2>)
 
 export default createContainer(() => {
   // Meteor.subscribe('MenuList')
-  const entradas = MenuItems.find({ 'tipo' : 'Entrada' }).fetch()
-  const principales = MenuItems.find({ 'tipo' : 'Principal' }).fetch()
-  const postres = MenuItems.find({ 'tipo' : 'Postre' }).fetch()
+  const entradas = Dishes.find({ 'type' : 'starter' }).fetch()
+  const principales = Dishes.find({ 'type' : 'main' }).fetch()
+  const postres = Dishes.find({ 'type' : 'dessert' }).fetch()
   return { entradas , principales, postres}
 }, Menu)

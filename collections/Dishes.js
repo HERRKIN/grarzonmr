@@ -10,8 +10,8 @@ import {Match} from 'meteor/check';
   mrf: Match.Optional(Object),
 })
 
-const MenuItems= new Mongo.Collection('menuitem');
-const MenuItemSchema = new SimpleSchema({
+const Dishes= new Mongo.Collection('dish');
+const DishSchema = new SimpleSchema({
 	name:{
 		type: String,
 		label:'Nombre del plato',
@@ -27,15 +27,15 @@ const MenuItemSchema = new SimpleSchema({
 			type:Text
 		}
 	},  
-	tipo: {
+	type: {
     type: String,
     label: 'Tipo ',
     mrf: {
       type: 'select',
       options: [
-        { label: 'Entrada', value: 'Entrada' },
-        { label: 'Principal', value: 'Principal' },   
-        { label: 'Postre', value: 'Postre' },
+        { label: 'Entrada', value: 'starter' },
+        { label: 'Principal', value: 'main' },   
+        { label: 'Postre', value: 'dessert' },
       ]
     }
    }//,
@@ -47,6 +47,6 @@ const MenuItemSchema = new SimpleSchema({
   // 	}
   // }
 })
-MenuItems.attachSchema(MenuItemSchema);
-export default MenuItems;
+Dishes.attachSchema(DishSchema);
+export default Dishes;
 
