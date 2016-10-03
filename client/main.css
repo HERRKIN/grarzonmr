@@ -15,18 +15,27 @@ body{
 .container{
 	margin:auto;
 	max-width: 1024px;
-	margin-bottom:40px;
+	margin-bottom:100px;
 }
 
 .Menu{
 	padding: 15px;
+	margin-bottom: 20px;
 }
-.item{
+.menu-item{
 	background: rgba(0, 220, 255, 0.15);
-/*	width: 48%;
-	margin: 1%;
-	display: inline-block;*/
+	width: 48%;
+	/*min-width: 490px;*/
+	display: inline-block;
+	margin:1%;
+	margin-bottom: 20px;
 	/*border-bottom: 1px solid black;*/
+}
+
+.menu-item > .mi-data {
+	padding-left: 2%;
+	width: 80%;
+	display: inline-block;
 }
 .drawerLinks{
 	padding-left:0px;
@@ -56,4 +65,25 @@ body{
 }
 .next{
 	margin-top:20px;
+}
+.OrderDishes{
+	width: 70%;
+	display: inline-block;
+}
+.OrderCustomer{
+	width: 30%;
+	float: right;
+}
+.menu-item-actions{
+	width: 10%;
+	float:right;
+	padding: auto;
+	text-align: center;
+}
+.typeImg{
+	max-width: 50px;
+	float: right;
+}
+.Menu > h2{
+	display: inline-block;
 }

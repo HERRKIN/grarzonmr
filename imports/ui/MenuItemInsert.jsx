@@ -21,7 +21,8 @@ export default class DishesInsert extends React.Component {
   render() {
     return (
       <Paper zDepth={1} className="Menu">
-        <h1>Nuevo Plato</h1>
+        <h2>Nuevo Plato</h2>
+        <img className="typeImg" src="https://cdn1.iconfinder.com/data/icons/food-drinks-set-2/136/Plates-512.png"/>
         <Form
         collection={Dishes}
         type='insert'

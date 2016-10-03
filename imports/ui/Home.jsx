@@ -26,11 +26,11 @@ renderOrders(items){
 
 
         	orderItems.push(<Paper zDepth={1} className="order" key={o._id}>
-
-			        	<div ><b>nombre:</b>{o.customer}</div>
-			        	<div>
+        				<p><b>Etiqueta:</b> {o._id}</p>
+			        	<div className="OrderDishes">
 			        	{dishItems.result}
 			        	</div>
+			        	<div className="OrderCustomer"><b>nombre:</b>{o.customer}</div>
         	</Paper>)
         })
    return orderItems
@@ -46,7 +46,7 @@ renderOrders(items){
     	<NavLink to="/menu" activeClassName="active">Configurar Menu</NavLink><br/>
     	{this.props.dishes.length?<NavLink to="/take-order" activeClassName="active">Tomar Orden</NavLink>:''}
     	</div>
-        <p className="orderP"><b>Pedidos</b></p>
+        <h1 className="orderP">Pedidos</h1>
 
         {this.props.orders.length?this.renderOrders(this.props.orders):<p>No hay pedidos</p>}
        </div> 

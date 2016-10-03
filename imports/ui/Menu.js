@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import TypeItem from './TypeItem.js';
+// import TypeItem from './TypeItem.js';
 
 const style = {
     margin: 0,
@@ -45,15 +45,17 @@ renderItems(type){
   // console.log(this.props.items)
   let last = '';
 
+let typeUrl = {Entradas:"https://cdn1.iconfinder.com/data/icons/food-drinks-set-2/96/Soup-512.png",
+Principales:"http://www.thrakikiagora.gr/media/com_jbusinessdirectory/pictures/categories/58512-1457433203.png",
+Postres:"https://cdn2.iconfinder.com/data/icons/food-solid-icons-vol-3/48/132-512.png"
+}
+
+
 var items =[];
 items.push(<h2 key={type.toLowerCase()}>{type}</h2>)
+items.push(<img className="typeImg" src={typeUrl[type]}/>)
+items.push(<br/>);
    this.props[type.toLowerCase()].forEach((i, index)=>{
- 
-    // if(i.type!==last){
-    //   items.push(<TypeItem type = {i.type} key = {last}/>);
-    //   last = i.type;
-    // } 
-    
     items.push(<MenuItem item={i} key={i._id} onDelete={this.deleteItem.bind(this)}/>);
     
   })
@@ -67,18 +69,18 @@ items.push(<h2 key={type.toLowerCase()}>{type}</h2>)
   }
 
     render() {
-        return (<div> 
+        return (<div > 
         <h1>Menu</h1>
-        <Paper zDepth={1} >
+        <Paper zDepth={1} className="Menu" >
         {this.props.entradas.length? this.renderItems("Entradas") :this.renderEmpty("Entradas")}
         </Paper>
         
-        <Paper zDepth={1} >
+        <Paper zDepth={1} className="Menu" >
         {this.props.principales.length? this.renderItems("Principales"):this.renderEmpty("Principales") }
         
         </Paper>
         
-        <Paper zDepth={1} >
+        <Paper zDepth={1} className="Menu" >
         {this.props.postres.length? this.renderItems("Postres"):this.renderEmpty("Postres")}
         </Paper>
         

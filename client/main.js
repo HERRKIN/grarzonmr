@@ -32,7 +32,7 @@ ReactDOM.render(
     <Route path='take-order' component={TakeOrder}/>
     <Route path="/about" component={About}/>
     <Route path="/menu" component={Menu}/>
-    <Route path="/menu/new" component={MenuItemInsert}/>
+        <Route path="/menu/new" component={MenuItemInsert}/>
     <Route path="/updateplato/:plato" component={MenuItemUpdate}/>
 
     </Route>
