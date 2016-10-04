@@ -1,5 +1,5 @@
 import {Mongo} from 'meteor/mongo';
-// import {SimpleSchema} from 'meteor/aldeed:simple-schema'
+// import {SimpleSchema} from 'meteor/aldeed:simple-schema' Esta linea está comentada y después repetida en la linea 6
 import Text from 'simple-react-form-material-ui/lib/text'
 // import toggle from 'simple-react-form-material-ui/lib/toggle'
 import select from 'simple-react-form-material-ui/lib/select'
